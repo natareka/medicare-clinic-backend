@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MediCare Clinic – Premium private healthcare with expert doctors. Book appointments online with instant SMS & email confirmation.">
+  <title>MediCare Clinic | Premium Healthcare & Appointment Booking</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <!-- AOS Animation -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏥</text></svg>">
+</head>
+<body>
+
+<!-- Page Loader -->
+<div class="page-loader">
+  <div>
+    <div class="loader-spinner mx-auto mb-3"></div>
+    <p class="text-muted small">Loading MediCare...</p>
+  </div>
+</div>
+
+<!-- ─── TOP BAR ──────────────────────────────────────────────────────────── -->
+<div class="top-bar d-none d-md-block">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-7">
+        <span class="me-4"><i class="fas fa-phone me-2"></i> <a href="tel:+6561234567">+65 6123 4567</a></span>
+        <span class="me-4"><i class="fas fa-envelope me-2"></i> <a href="mailto:info@medicare-clinic.com">info@medicare-clinic.com</a></span>
+        <span><i class="fas fa-clock me-2"></i> Mon–Sat: 8:00 AM – 8:00 PM</span>
+      </div>
+      <div class="col-md-5 text-end">
+        <span class="me-3"><i class="fas fa-map-marker-alt me-1"></i> 123 Medical Drive, Singapore</span>
+        <a href="#" class="me-2"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="me-2"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── EMERGENCY BANNER ─────────────────────────────────────────────────── -->
+<div class="emergency-banner">
+  <div class="container">
+    <p><i class="fas fa-ambulance me-2"></i> <strong>24/7 Emergency:</strong> Call <a href="tel:+6561234999">+65 6123 4999</a> for immediate medical assistance</p>
+  </div>
+</div>
+
+<!-- ─── NAVBAR ───────────────────────────────────────────────────────────── -->
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <div class="brand-logo"><i class="fas fa-heartbeat"></i></div>
+      <div class="brand-text">
+        <span class="brand-name">MediCare</span>
+        <span class="brand-tag">Premium Clinic</span>
+      </div>
+    </a>
+    <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-1 mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link nav-scroll" data-target="home" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link nav-scroll" data-target="about" href="#">About</a></li>
+        <li class="nav-item"><a class="nav-link nav-scroll" data-target="departments" href="#">Departments</a></li>
+        <li class="nav-item"><a class="nav-link nav-scroll" data-target="doctors" href="#">Doctors</a></li>
+        <li class="nav-item"><a class="nav-link nav-scroll" data-target="services" href="#">Services</a></li>
+        <li class="nav-item"><a class="nav-link nav-scroll" data-target="testimonials" href="#">Reviews</a></li>
+        <li class="nav-item"><a class="nav-link nav-scroll" data-target="contact" href="#">Contact</a></li>
+        <li class="nav-item ms-lg-2">
+          <a class="nav-link nav-cta" href="#" onclick="openBookingModal(); return false;">
+            <i class="fas fa-calendar-plus me-1"></i> Book Appointment
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────────────────────────────────── -->
+<section class="hero-section" id="home">
+  <div class="hero-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+  <div class="container position-relative">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6">
+        <div class="hero-badge">
+          <span class="dot"></span> Accepting New Patients
+        </div>
+        <h1 class="hero-title" style="background: url('C:\Users\gurun\OneDrive\Desktop\Full Stack AI\E-Commerce-MiniProject_Task6\Python_Practice_Project\medicare_clinic_project\clinic_project\frontend\Landing_hero_img.png;'); background-size: cover; background-position: center;">
+          Your Health,<br>Our <span>Priority</span>.<br>Every Day.
+        </h1>
+        <p class="hero-desc">
+          Experience world-class healthcare with Singapore's most trusted private clinic.
+          Expert specialists, cutting-edge diagnostics, and compassionate care — all under one roof.
+        </p>
+        <div class="d-flex flex-wrap gap-3 hero-btn-group">
+          <a href="#" class="btn-primary-custom" onclick="openBookingModal(); return false;">
+            <i class="fas fa-calendar-plus"></i> Book Appointment
+          </a>
+          <a href="#departments" class="btn-outline-custom text-white border-white" onclick="document.getElementById('departments').scrollIntoView({behavior:'smooth'}); return false;">
+            <i class="fas fa-grid-2"></i> Our Departments
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="num" data-count="50">50</span>
+            <span class="lbl">Doctors</span>
+          </div>
+          <div class="hero-stat">
+            <span class="num" data-count="25000">25,000</span>
+            <span class="lbl">Patients Served</span>
+          </div>
+          <div class="hero-stat">
+            <span class="num" data-count="15">15</span>
+            <span class="lbl">Specialties</span>
+          </div>
+          <div class="hero-stat">
+            <span class="num" data-count="20">20</span>
+            <span class="lbl">Years Experience</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="hero-card">
+          <h4><i class="fas fa-calendar-check text-primary me-2"></i> Quick Appointment</h4>
+          <div class="row g-3">
+            <div class="col-12">
+              <select class="form-select" id="quickDept" onchange="prefillDept(this.value)">
+                <option value="">Select Department</option>
+                <option>Cardiology</option>
+                <option>Neurology</option>
+                <option>Orthopedics</option>
+                <option>Pediatrics</option>
+                <option>Oncology</option>
+                <option>Dermatology</option>
+                <option>Gynecology</option>
+                <option>General Surgery</option>
+              </select>
+            </div>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" placeholder="Your Full Name">
+            </div>
+            <div class="col-sm-6">
+              <input type="tel" class="form-control" placeholder="Phone Number">
+            </div>
+            <div class="col-12">
+              <button class="btn-primary-custom w-100 justify-content-center" onclick="openBookingModal()">
+                <i class="fas fa-search"></i> Find Available Slots
+              </button>
+            </div>
+          </div>
+          <hr class="my-3">
+          <div class="d-flex gap-4 justify-content-center text-center">
+            <div><i class="fas fa-shield-alt text-primary me-1"></i><small>Verified Doctors</small></div>
+            <div><i class="fas fa-sms text-success me-1"></i><small>SMS Reminder</small></div>
+            <div><i class="fas fa-envelope text-primary me-1"></i><small>Email Confirm</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── QUICK LINKS ───────────────────────────────────────────────────────── -->
+<section class="py-4 bg-white">
+  <div class="container quick-links">
+    <div class="row g-3">
+      <div class="col-6 col-md-3">
+        <div class="quick-link-card" onclick="openBookingModal()">
+          <div class="quick-link-icon" style="background:#e8f4fd;color:#1a6db5;"><i class="fas fa-calendar-plus"></i></div>
+          <h6>Book Appointment</h6>
+          <p>Online booking with instant confirmation</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="quick-link-card" data-bs-toggle="modal" data-bs-target="#checkApptModal">
+          <div class="quick-link-icon" style="background:#e8f7f0;color:#27ae60;"><i class="fas fa-search"></i></div>
+          <h6>Check Appointment</h6>
+          <p>View or manage your bookings</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="quick-link-card" onclick="document.getElementById('doctors').scrollIntoView({behavior:'smooth'})">
+          <div class="quick-link-icon" style="background:#fff3e0;color:#f39c12;"><i class="fas fa-user-md"></i></div>
+          <h6>Find a Doctor</h6>
+          <p>Search by specialty or name</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="quick-link-card" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+          <div class="quick-link-icon" style="background:#fce8e8;color:#e74c3c;"><i class="fas fa-phone-volume"></i></div>
+          <h6>Emergency Line</h6>
+          <p>24/7 medical emergency support</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─────────────────────────────────────────────────────────────── -->
+<section class="section-py bg-light" id="about">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6 fade-up">
+        <div class="position-relative">
+          <div style="background:linear-gradient(135deg,#0a3d62,#1a6db5);border-radius:20px;padding:50px;text-align:center;color:#fff;">
+            <i class="fas fa-hospital-alt" style="font-size:80px;opacity:0.2;position:absolute;top:20px;right:20px;"></i>
+            <div class="row g-4 position-relative">
+              <div class="col-6">
+                <div style="background:rgba(255,255,255,0.12);border-radius:12px;padding:20px;">
+                  <div style="font-size:32px;font-weight:700;font-family:'Playfair Display',serif;">20+</div>
+                  <div style="font-size:12px;opacity:0.8;">Years of Excellence</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div style="background:rgba(255,255,255,0.12);border-radius:12px;padding:20px;">
+                  <div style="font-size:32px;font-weight:700;font-family:'Playfair Display',serif;">50+</div>
+                  <div style="font-size:12px;opacity:0.8;">Expert Specialists</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div style="background:rgba(255,255,255,0.12);border-radius:12px;padding:20px;">
+                  <div style="font-size:32px;font-weight:700;font-family:'Playfair Display',serif;">4.8★</div>
+                  <div style="font-size:12px;opacity:0.8;">Patient Rating</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div style="background:rgba(255,255,255,0.12);border-radius:12px;padding:20px;">
+                  <div style="font-size:32px;font-weight:700;font-family:'Playfair Display',serif;">24/7</div>
+                  <div style="font-size:12px;opacity:0.8;">Emergency Care</div>
+                </div>
+              </div>
+            </div>
+            <p class="mt-4 mb-0" style="opacity:0.75;font-size:13px;">Joint Commission International Accredited</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 fade-up">
+        <span style="color:var(--primary-light);font-weight:600;font-size:13px;letter-spacing:2px;text-transform:uppercase;">About MediCare</span>
+        <h2 class="section-title mt-2">Committed to Excellence in Healthcare</h2>
+        <div class="divider"></div>
+        <p class="text-muted mb-4">
+          Founded in 2004, MediCare Clinic has been Singapore's trusted private healthcare provider for over two decades.
+          Our state-of-the-art facility combines cutting-edge medical technology with compassionate, patient-centered care.
+        </p>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-user-md"></i></div>
+          <div>
+            <h6>Expert Medical Team</h6>
+            <p>Our 50+ specialists are trained at top institutions worldwide, bringing global expertise to Singapore.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-microscope"></i></div>
+          <div>
+            <h6>Advanced Diagnostics</h6>
+            <p>In-house MRI, CT, PET scans and fully equipped laboratory for rapid, accurate diagnoses.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+          <div>
+            <h6>JCI Accredited Quality</h6>
+            <p>Joint Commission International accredited — the gold standard for hospital quality and safety.</p>
+          </div>
+        </div>
+        <a href="#" class="btn-primary-custom mt-2" onclick="openBookingModal(); return false;">
+          <i class="fas fa-calendar-check"></i> Book an Appointment
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DEPARTMENTS ───────────────────────────────────────────────────────── -->
+<section class="section-py" id="departments">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <span style="color:var(--primary-light);font-weight:600;font-size:13px;letter-spacing:2px;text-transform:uppercase;">Our Specialties</span>
+      <h2 class="section-title mt-2">Medical Departments</h2>
+      <div class="divider center"></div>
+      <p class="section-subtitle mx-auto">
+        Comprehensive care across 15+ specialties, delivered by expert physicians using the latest medical technology.
+      </p>
+    </div>
+    <div class="row" id="departmentsGrid">
+      <!-- Loaded dynamically by JS -->
+      <div class="col-12 text-center py-4"><div class="loader-spinner mx-auto"></div></div>
+    </div>
+    <div class="text-center mt-3 fade-up">
+      <a href="#" class="btn-outline-custom" onclick="openBookingModal(); return false;">
+        <i class="fas fa-calendar-plus me-2"></i> Book Appointment for Any Department
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS SECTION ─────────────────────────────────────────────────────── -->
+<section class="stats-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <span class="stat-num"><span data-count="50" data-stat="doctors">50</span><span class="stat-plus">+</span></span>
+          <span class="stat-label">Expert Doctors</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <span class="stat-num"><span data-count="15" data-stat="departments">15</span><span class="stat-plus">+</span></span>
+          <span class="stat-label">Departments</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <span class="stat-num"><span data-count="25000" data-stat="patients">25,000</span><span class="stat-plus">+</span></span>
+          <span class="stat-label">Happy Patients</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-item">
+          <span class="stat-num"><span data-count="20">20</span><span class="stat-plus">+</span></span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DOCTORS ───────────────────────────────────────────────────────────── -->
+<section class="section-py" id="doctors">
+  <div class="container">
+    <div class="row align-items-center mb-5">
+      <div class="col-lg-7 fade-up">
+        <span style="color:var(--primary-light);font-weight:600;font-size:13px;letter-spacing:2px;text-transform:uppercase;">Meet Our Team</span>
+        <h2 class="section-title mt-2">Expert Specialists</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">Our doctors are internationally trained specialists dedicated to providing the best care.</p>
+      </div>
+      <div class="col-lg-5 fade-up">
+        <div class="input-group mt-3">
+          <span class="input-group-text bg-light border-0"><i class="fas fa-search text-muted"></i></span>
+          <input type="text" class="form-control border-0 bg-light" id="doctorSearch" placeholder="Search by doctor name or specialty...">
+        </div>
+      </div>
+    </div>
+    <div class="row" id="doctorsGrid">
+      <div class="col-12 text-center py-4"><div class="loader-spinner mx-auto"></div></div>
+    </div>
+    <div class="text-center mt-4 fade-up">
+      <button class="btn-outline-custom" onclick="loadDoctors()">
+        <i class="fas fa-sync me-2"></i> Show All Doctors
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ──────────────────────────────────────────────────────────── -->
+<section class="section-py bg-light" id="services">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <span style="color:var(--primary-light);font-weight:600;font-size:13px;letter-spacing:2px;text-transform:uppercase;">What We Offer</span>
+      <h2 class="section-title mt-2">Our Services</h2>
+      <div class="divider center"></div>
+      <p class="section-subtitle mx-auto">Comprehensive healthcare services designed for your convenience and well-being.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6 fade-up">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-ambulance"></i></div>
+          <h5>24/7 Emergency Care</h5>
+          <p>Round-the-clock emergency services with rapid response teams and a fully equipped trauma center.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 fade-up">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-microscope"></i></div>
+          <h5>Advanced Diagnostics</h5>
+          <p>State-of-the-art MRI, CT scan, PET scan, and fully equipped laboratory for rapid, accurate results.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 fade-up">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-calendar-check"></i></div>
+          <h5>Online Appointment</h5>
+          <p>Book appointments online 24/7 with instant SMS and email confirmation. No waiting in queues.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 fade-up">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-pills"></i></div>
+          <h5>Pharmacy Services</h5>
+          <p>In-house pharmacy with all major medications, with optional home delivery for your convenience.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 fade-up">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-procedures"></i></div>
+          <h5>ICU & Critical Care</h5>
+          <p>Fully equipped 20-bed ICU with specialist intensivists and 24/7 monitoring systems.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 fade-up">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-clipboard-list"></i></div>
+          <h5>Health Packages</h5>
+          <p>Comprehensive health screening packages tailored for all age groups and corporate clients.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHY CHOOSE US ─────────────────────────────────────────────────────── -->
+<section class="section-py" id="why-us">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6 fade-up">
+        <span style="color:var(--primary-light);font-weight:600;font-size:13px;letter-spacing:2px;text-transform:uppercase;">Why MediCare</span>
+        <h2 class="section-title mt-2">Why Patients Choose Us</h2>
+        <div class="divider"></div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-award"></i></div>
+          <div>
+            <h6>JCI Accredited Excellence</h6>
+            <p>International gold standard accreditation guaranteeing the highest quality and safety standards.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+          <div>
+            <h6>Digital First Experience</h6>
+            <p>Book, track, and manage appointments online with SMS and email notifications at every step.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-wallet"></i></div>
+          <div>
+            <h6>Transparent Pricing</h6>
+            <p>Clear, upfront pricing with no hidden fees. We accept all major insurance and Medisave.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-heart"></i></div>
+          <div>
+            <h6>Patient-Centered Care</h6>
+            <p>Every treatment plan is personalised. Our doctors spend time to truly understand your needs.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 fade-up">
+        <div class="row g-3">
+          <div class="col-6">
+            <div class="p-4 bg-light rounded-3 text-center h-100">
+              <i class="fas fa-star text-warning fs-2 mb-3 d-block"></i>
+              <h5 class="text-primary">4.8/5</h5>
+              <p class="text-muted small mb-0">Google Rating<br><strong>3,200+ Reviews</strong></p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="p-4 rounded-3 text-center h-100" style="background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;">
+              <i class="fas fa-certificate fs-2 mb-3 d-block" style="opacity:0.8;"></i>
+              <h5>JCI</h5>
+              <p class="small mb-0" style="opacity:0.8;">International<br><strong>Accredited</strong></p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="p-4 rounded-3 text-center h-100" style="background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;">
+              <i class="fas fa-ambulance fs-2 mb-3 d-block" style="opacity:0.8;"></i>
+              <h5>24/7</h5>
+              <p class="small mb-0" style="opacity:0.8;">Emergency<br><strong>Always Ready</strong></p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="p-4 bg-light rounded-3 text-center h-100">
+              <i class="fas fa-shield-alt text-success fs-2 mb-3 d-block"></i>
+              <h5 class="text-primary">100%</h5>
+              <p class="text-muted small mb-0">Privacy<br><strong>Guaranteed</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ──────────────────────────────────────────────────────── -->
+<section class="section-py bg-light" id="testimonials">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <span style="color:var(--primary-light);font-weight:600;font-size:13px;letter-spacing:2px;text-transform:uppercase;">Patient Stories</span>
+      <h2 class="section-title mt-2">What Our Patients Say</h2>
+      <div class="divider center"></div>
+      <p class="section-subtitle mx-auto">Real experiences from real patients who trusted MediCare with their health.</p>
+    </div>
+    <div class="row" id="testimonialsGrid">
+      <div class="col-12 text-center py-4"><div class="loader-spinner mx-auto"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ───────────────────────────────────────────────────────────── -->
+<section class="section-py" id="contact">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <span style="color:var(--primary-light);font-weight:600;font-size:13px;letter-spacing:2px;text-transform:uppercase;">Get in Touch</span>
+      <h2 class="section-title mt-2">Contact Us</h2>
+      <div class="divider center"></div>
+    </div>
+    <div class="row gy-5">
+      <div class="col-lg-5 fade-up">
+        <div class="contact-info-item">
+          <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <h6>Our Location</h6>
+            <p>123 Medical Drive, Novena<br>Singapore 307506</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+          <div>
+            <h6>Phone Numbers</h6>
+            <p>Main: +65 6123 4567<br>Emergency: +65 6123 4999</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <h6>Email Addresses</h6>
+            <p>info@medicare-clinic.com<br>appointments@medicare-clinic.com</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon"><i class="fas fa-clock"></i></div>
+          <div>
+            <h6>Opening Hours</h6>
+            <p>Monday – Saturday: 8:00 AM – 8:00 PM<br>Sunday: 9:00 AM – 5:00 PM<br>Emergency: 24/7</p>
+          </div>
+        </div>
+        <div class="social-links mt-3">
+          <a class="social-link" href="#"><i class="fab fa-facebook-f"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-instagram"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-twitter"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-whatsapp"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-7 fade-up">
+        <div class="p-4 bg-light rounded-4">
+          <h5 class="text-primary mb-4"><i class="fas fa-envelope me-2"></i> Send Us a Message</h5>
+          <form id="contactForm">
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label class="form-label">Full Name *</label>
+                <input type="text" class="form-control" id="contactName" required placeholder="Your name">
+              </div>
+              <div class="col-sm-6">
+                <label class="form-label">Email Address *</label>
+                <input type="email" class="form-control" id="contactEmail" required placeholder="your@email.com">
+              </div>
+              <div class="col-sm-6">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="contactPhone" placeholder="+65 XXXX XXXX">
+              </div>
+              <div class="col-sm-6">
+                <label class="form-label">Subject *</label>
+                <select class="form-select" id="contactSubject" required>
+                  <option value="">Select subject</option>
+                  <option>General Enquiry</option>
+                  <option>Appointment Query</option>
+                  <option>Medical Records</option>
+                  <option>Insurance Query</option>
+                  <option>Feedback</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Message *</label>
+                <textarea class="form-control" id="contactMessage" rows="4" required placeholder="Your message..."></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn-primary-custom">
+                  <i class="fas fa-paper-plane me-2"></i> Send Message
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <div class="brand-logo"><i class="fas fa-heartbeat"></i></div>
+          <div>
+            <div style="color:#fff;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;">MediCare Clinic</div>
+            <div style="font-size:11px;opacity:0.6;">Premium Healthcare Singapore</div>
+          </div>
+        </div>
+        <p>Your trusted private healthcare partner since 2004. JCI-accredited excellence in patient care across 15+ specialties.</p>
+        <div class="social-links">
+          <a class="social-link" href="#"><i class="fab fa-facebook-f"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-instagram"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-whatsapp"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#about" onclick="scrollTo('#about')">About Us</a></li>
+          <li><a href="#departments">Departments</a></li>
+          <li><a href="#doctors">Doctors</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h5>Specialties</h5>
+        <ul>
+          <li><a href="#">Cardiology</a></li>
+          <li><a href="#">Neurology</a></li>
+          <li><a href="#">Orthopedics</a></li>
+          <li><a href="#">Pediatrics</a></li>
+          <li><a href="#">Oncology</a></li>
+          <li><a href="#">Dermatology</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h5>Contact Info</h5>
+        <p><i class="fas fa-map-marker-alt me-2"></i> 123 Medical Drive, Singapore 307506</p>
+        <p><i class="fas fa-phone me-2"></i> +65 6123 4567</p>
+        <p><i class="fas fa-envelope me-2"></i> info@medicare-clinic.com</p>
+        <p><i class="fas fa-clock me-2"></i> Mon–Sat: 8 AM – 8 PM</p>
+        <a href="#" class="btn-accent-custom mt-2" onclick="openBookingModal(); return false;">
+          <i class="fas fa-calendar-plus me-2"></i> Book Now
+        </a>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <p>© 2024 MediCare Clinic. All rights reserved. | Designed with ❤️ for better healthcare | 
+        <a href="#" style="color:rgba(255,255,255,0.5);">Privacy Policy</a> · 
+        <a href="#" style="color:rgba(255,255,255,0.5);">Terms of Service</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── SCROLL TO TOP ──────────────────────────────────────────────────────── -->
+<button id="scrollTop" title="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ─── BOOKING MODAL ─────────────────────────────────────────────────────── -->
+<div class="modal fade" id="bookingModal" tabindex="-1" data-bs-backdrop="static">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content border-0" style="border-radius:16px;overflow:hidden;">
+      <div class="modal-header-custom">
+        <div class="d-flex align-items-center justify-content-between w-100">
+          <h5 class="modal-title mb-0">📅 Book Your Appointment</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+      </div>
+      <div class="modal-body p-4">
+        <!-- Step Indicator -->
+        <div class="step-indicator">
+          <div class="step active">
+            <div class="step-num">1</div>
+            <div class="step-label">Schedule</div>
+          </div>
+          <div class="step-line"></div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-label">Patient Info</div>
+          </div>
+          <div class="step-line"></div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-label">Confirm</div>
+          </div>
+        </div>
+
+        <form id="bookingForm">
+          <!-- Step 1: Schedule -->
+          <div class="step-content">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Department *</label>
+                <select class="form-select" id="bookingDept" required>
+                  <option value="">Select Department</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Doctor *</label>
+                <select class="form-select" id="bookingDoctor" required>
+                  <option value="">Select Doctor</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Appointment Date *</label>
+                <input type="date" class="form-control" id="bookingDate" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Appointment Type *</label>
+                <select class="form-select" id="bookingType">
+                  <option value="CONSULTATION">Consultation</option>
+                  <option value="FOLLOWUP">Follow Up</option>
+                  <option value="CHECKUP">General Checkup</option>
+                  <option value="EMERGENCY">Emergency</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label" id="slotsLabel" style="display:none;">Available Time Slots</label>
+                <div id="timeSlotsContainer"></div>
+                <p class="text-muted small mt-2" id="slotHint"><i class="fas fa-info-circle me-1"></i> Select a doctor and date to see available slots</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Patient Info -->
+          <div class="step-content" style="display:none;">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">First Name *</label>
+                <input type="text" class="form-control" id="patientFirstName" required placeholder="First name">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Last Name *</label>
+                <input type="text" class="form-control" id="patientLastName" required placeholder="Last name">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Email Address *</label>
+                <input type="email" class="form-control" id="patientEmail" required placeholder="your@email.com">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Phone Number *</label>
+                <input type="tel" class="form-control" id="patientPhone" required placeholder="+65 XXXX XXXX">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" id="patientDOB">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Gender *</label>
+                <select class="form-select" id="patientGender" required>
+                  <option value="">Select</option>
+                  <option value="M">Male</option>
+                  <option value="F">Female</option>
+                  <option value="O">Other</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Blood Group</label>
+                <select class="form-select" id="patientBloodGroup">
+                  <option value="">Unknown</option>
+                  <option>A+</option><option>A-</option>
+                  <option>B+</option><option>B-</option>
+                  <option>AB+</option><option>AB-</option>
+                  <option>O+</option><option>O-</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">City</label>
+                <input type="text" class="form-control" id="patientCity" placeholder="City">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Address</label>
+                <input type="text" class="form-control" id="patientAddress" placeholder="Street address">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Symptoms / Reason for Visit</label>
+                <textarea class="form-control" id="patientSymptoms" rows="3" placeholder="Briefly describe your symptoms or reason for the appointment..."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Confirm -->
+          <div class="step-content" style="display:none;">
+            <h6 class="text-primary mb-3"><i class="fas fa-clipboard-check me-2"></i> Confirm Your Appointment</h6>
+            <div id="confirmDetails"></div>
+            <div class="alert alert-warning mt-3" style="font-size:13px;">
+              <i class="fas fa-bell me-2"></i>
+              A <strong>confirmation email and SMS</strong> will be sent to you immediately after booking. 
+              A <strong>24-hour reminder</strong> will be sent the day before your appointment.
+            </div>
+          </div>
+
+          <!-- Success State -->
+          <div id="bookingSuccess" style="display:none;"></div>
+        </form>
+      </div>
+      <div class="modal-footer border-0 px-4 pb-4 pt-0 gap-2">
+        <button class="btn-outline-custom" id="prevBtn" style="display:none;">
+          <i class="fas fa-arrow-left me-2"></i> Back
+        </button>
+        <button class="btn-primary-custom ms-auto" id="nextBtn">
+          Next Step <i class="fas fa-arrow-right ms-2"></i>
+        </button>
+        <button class="btn-primary-custom ms-auto" id="submitBtn" style="display:none;">
+          <i class="fas fa-check me-2"></i> Confirm Booking
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── CHECK APPOINTMENT MODAL ──────────────────────────────────────────── -->
+<div class="modal fade" id="checkApptModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0" style="border-radius:16px;overflow:hidden;">
+      <div class="modal-header-custom">
+        <h5 class="modal-title text-white mb-0">🔍 Check My Appointment</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body p-4">
+        <form id="checkApptForm" class="mb-3">
+          <label class="form-label">Enter your email address</label>
+          <div class="input-group">
+            <input type="email" class="form-control" id="checkApptEmail" required placeholder="your@email.com">
+            <button class="btn-primary-custom px-4" type="submit">Search</button>
+          </div>
+        </form>
+        <div id="checkApptResult"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── SCRIPTS ───────────────────────────────────────────────────────────── -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+  AOS.init({ duration: 700, once: true });
+
+  // Slot hint toggle
+  document.getElementById('bookingDoctor')?.addEventListener('change', () => {
+    document.getElementById('slotHint').style.display = 'none';
+  });
+  document.getElementById('bookingDate')?.addEventListener('change', () => {
+    document.getElementById('slotHint').style.display = 'none';
+  });
+</script>
+</body>
+</html>

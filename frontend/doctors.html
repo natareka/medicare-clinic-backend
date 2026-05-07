@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Doctors | MediCare Clinic</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar d-none d-md-block">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <span class="me-4"><i class="fas fa-phone me-2"></i><a href="tel:+6561234567">+65 6123 4567</a></span>
+        <span><i class="fas fa-clock me-2"></i> Mon–Sat: 8:00 AM – 8:00 PM</span>
+      </div>
+      <div class="col-md-4 text-end">
+        <span><i class="fas fa-map-marker-alt me-1"></i> 123 Medical Drive, Singapore</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg scrolled shadow-sm bg-white" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <div class="brand-logo"><i class="fas fa-heartbeat"></i></div>
+      <div class="brand-text">
+        <span class="brand-name" style="color:var(--primary)!important;">MediCare</span>
+        <span class="brand-tag" style="color:var(--gray);">Premium Clinic</span>
+      </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-1 mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" style="color:var(--dark)!important;" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" style="color:var(--primary)!important;font-weight:700;" href="doctors.html">Doctors</a></li>
+        <li class="nav-item"><a class="nav-link" style="color:var(--dark)!important;" href="appointments.html">My Appointments</a></li>
+        <li class="nav-item ms-lg-2">
+          <a class="nav-link nav-cta" href="#" onclick="openBookingModal();return false;">
+            <i class="fas fa-calendar-plus me-1"></i> Book Now
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Hero -->
+<section style="background:linear-gradient(135deg,var(--primary-dark),var(--primary));padding:80px 0 50px;">
+  <div class="container text-center text-white">
+    <h1 style="font-family:'Playfair Display',serif;font-size:42px;">Our Expert Doctors</h1>
+    <p style="opacity:0.8;font-size:16px;">Internationally trained specialists dedicated to your health</p>
+    <nav aria-label="breadcrumb" class="d-flex justify-content-center mt-3">
+      <ol class="breadcrumb" style="background:rgba(255,255,255,0.1);padding:8px 20px;border-radius:30px;">
+        <li class="breadcrumb-item"><a href="index.html" style="color:rgba(255,255,255,0.7);">Home</a></li>
+        <li class="breadcrumb-item active text-white">Doctors</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<!-- Filter Bar -->
+<section class="py-4 bg-light border-bottom">
+  <div class="container">
+    <div class="row g-3 align-items-center">
+      <div class="col-md-4">
+        <div class="input-group">
+          <span class="input-group-text bg-white border-end-0"><i class="fas fa-search text-muted"></i></span>
+          <input type="text" class="form-control border-start-0" id="filterSearch" placeholder="Search doctor or specialty...">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <select class="form-select" id="filterDept">
+          <option value="">All Departments</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <select class="form-select" id="filterGender">
+          <option value="">All Genders</option>
+          <option value="M">Male Doctors</option>
+          <option value="F">Female Doctors</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <button class="btn-outline-custom w-100" onclick="resetFilters()"><i class="fas fa-redo me-1"></i> Reset</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Doctors Grid -->
+<section class="section-py">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <p class="text-muted mb-0" id="doctorCount">Loading doctors...</p>
+      <div class="d-flex gap-2">
+        <button class="btn btn-sm btn-outline-secondary" onclick="setView('grid')" id="gridBtn"><i class="fas fa-th"></i></button>
+        <button class="btn btn-sm btn-outline-secondary" onclick="setView('list')" id="listBtn"><i class="fas fa-list"></i></button>
+      </div>
+    </div>
+    <div class="row" id="doctorsFullGrid">
+      <div class="col-12 text-center py-5"><div class="loader-spinner mx-auto"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Booking Modal (reuse) -->
+<div class="modal fade" id="bookingModal" tabindex="-1" data-bs-backdrop="static">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content border-0" style="border-radius:16px;overflow:hidden;">
+      <div class="modal-header-custom">
+        <h5 class="modal-title text-white mb-0">📅 Book Appointment</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body p-4">
+        <div class="step-indicator">
+          <div class="step active"><div class="step-num">1</div><div class="step-label">Schedule</div></div>
+          <div class="step-line"></div>
+          <div class="step"><div class="step-num">2</div><div class="step-label">Patient Info</div></div>
+          <div class="step-line"></div>
+          <div class="step"><div class="step-num">3</div><div class="step-label">Confirm</div></div>
+        </div>
+        <form id="bookingForm">
+          <div class="step-content">
+            <div class="row g-3">
+              <div class="col-md-6"><label class="form-label">Department *</label><select class="form-select" id="bookingDept" required><option value="">Select Department</option></select></div>
+              <div class="col-md-6"><label class="form-label">Doctor *</label><select class="form-select" id="bookingDoctor" required><option value="">Select Doctor</option></select></div>
+              <div class="col-md-6"><label class="form-label">Date *</label><input type="date" class="form-control" id="bookingDate" required></div>
+              <div class="col-md-6"><label class="form-label">Type *</label><select class="form-select" id="bookingType"><option value="CONSULTATION">Consultation</option><option value="FOLLOWUP">Follow Up</option><option value="CHECKUP">General Checkup</option></select></div>
+              <div class="col-12"><label class="form-label" id="slotsLabel" style="display:none;">Available Slots</label><div id="timeSlotsContainer"></div><p class="text-muted small mt-2" id="slotHint"><i class="fas fa-info-circle me-1"></i>Select doctor and date to see slots</p></div>
+            </div>
+          </div>
+          <div class="step-content" style="display:none;">
+            <div class="row g-3">
+              <div class="col-md-6"><label class="form-label">First Name *</label><input type="text" class="form-control" id="patientFirstName" required></div>
+              <div class="col-md-6"><label class="form-label">Last Name *</label><input type="text" class="form-control" id="patientLastName" required></div>
+              <div class="col-md-6"><label class="form-label">Email *</label><input type="email" class="form-control" id="patientEmail" required></div>
+              <div class="col-md-6"><label class="form-label">Phone *</label><input type="tel" class="form-control" id="patientPhone" required></div>
+              <div class="col-md-4"><label class="form-label">DOB</label><input type="date" class="form-control" id="patientDOB"></div>
+              <div class="col-md-4"><label class="form-label">Gender *</label><select class="form-select" id="patientGender" required><option value="">Select</option><option value="M">Male</option><option value="F">Female</option><option value="O">Other</option></select></div>
+              <div class="col-md-4"><label class="form-label">Blood Group</label><select class="form-select" id="patientBloodGroup"><option value="">Unknown</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select></div>
+              <div class="col-12"><label class="form-label">Symptoms</label><textarea class="form-control" id="patientSymptoms" rows="3"></textarea></div>
+            </div>
+          </div>
+          <div class="step-content" style="display:none;"><h6 class="text-primary mb-3"><i class="fas fa-clipboard-check me-2"></i>Confirm Appointment</h6><div id="confirmDetails"></div><div class="alert alert-warning mt-3" style="font-size:13px;"><i class="fas fa-bell me-2"></i>SMS & Email confirmation will be sent immediately.</div></div>
+          <div id="bookingSuccess" style="display:none;"></div>
+        </form>
+      </div>
+      <div class="modal-footer border-0 px-4 pb-4 pt-0 gap-2">
+        <button class="btn-outline-custom" id="prevBtn" style="display:none;"><i class="fas fa-arrow-left me-2"></i>Back</button>
+        <button class="btn-primary-custom ms-auto" id="nextBtn">Next <i class="fas fa-arrow-right ms-2"></i></button>
+        <button class="btn-primary-custom ms-auto" id="submitBtn" style="display:none;"><i class="fas fa-check me-2"></i>Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button id="scrollTop" title="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+let allDoctorsPage = [];
+
+async function loadAllDoctors() {
+  const API_BASE = 'http://127.0.0.1:8000/api';
+  const fallback = [
+    { id:1, name:'Sarah Chen', department_name:'Cardiology', department:1, qualification:'MD, DM Cardiology', specialization:'Interventional Cardiology', experience_years:15, consultation_fee:'150.00', rating:'4.9', total_patients:1250, is_available:true, gender:'F' },
+    { id:2, name:'James Lim', department_name:'Neurology', department:2, qualification:'MD, DM Neurology', specialization:'Stroke & Epilepsy', experience_years:12, consultation_fee:'130.00', rating:'4.8', total_patients:980, is_available:true, gender:'M' },
+    { id:3, name:'Priya Sharma', department_name:'Orthopedics', department:3, qualification:'MBBS, MS Ortho', specialization:'Joint Replacement', experience_years:10, consultation_fee:'120.00', rating:'4.7', total_patients:820, is_available:true, gender:'F' },
+    { id:4, name:'Michael Tan', department_name:'Pediatrics', department:4, qualification:'MBBS, MD Pediatrics', specialization:'Child Development', experience_years:8, consultation_fee:'100.00', rating:'4.9', total_patients:730, is_available:true, gender:'M' },
+    { id:5, name:'Aisha Rahman', department_name:'Oncology', department:5, qualification:'MD, DM Oncology', specialization:'Medical Oncology', experience_years:14, consultation_fee:'200.00', rating:'4.8', total_patients:640, is_available:true, gender:'F' },
+    { id:6, name:'David Wong', department_name:'Dermatology', department:6, qualification:'MBBS, MD Dermatology', specialization:'Cosmetic Dermatology', experience_years:9, consultation_fee:'110.00', rating:'4.6', total_patients:590, is_available:true, gender:'M' },
+    { id:7, name:'Meera Nair', department_name:'Gynecology', department:7, qualification:'MBBS, MS OBG', specialization:"Women's Health", experience_years:11, consultation_fee:'125.00', rating:'4.9', total_patients:710, is_available:true, gender:'F' },
+    { id:8, name:'Robert Kumar', department_name:'General Surgery', department:8, qualification:'MBBS, MS Surgery', specialization:'Laparoscopic Surgery', experience_years:13, consultation_fee:'140.00', rating:'4.7', total_patients:860, is_available:true, gender:'M' },
+  ];
+
+  try {
+    const res = await fetch(`${API_BASE}/doctors/`);
+    const data = await res.json();
+    allDoctorsPage = data.success && data.data.length ? data.data : fallback;
+  } catch { allDoctorsPage = fallback; }
+
+  // Populate filter dept
+  const depts = [...new Set(allDoctorsPage.map(d => d.department_name))];
+  const deptSel = document.getElementById('filterDept');
+  depts.forEach(d => {
+    const opt = document.createElement('option');
+    opt.value = d; opt.textContent = d;
+    deptSel.appendChild(opt);
+  });
+
+  renderAllDoctors(allDoctorsPage);
+  // Also populate booking dept
+  loadDepartments();
+}
+
+function renderAllDoctors(doctors) {
+  const grid = document.getElementById('doctorsFullGrid');
+  document.getElementById('doctorCount').textContent = `Showing ${doctors.length} doctor${doctors.length!==1?'s':''}`;
+  if (!doctors.length) {
+    grid.innerHTML = `<div class="col-12 text-center py-5"><i class="fas fa-search fa-3x text-muted mb-3 d-block"></i><p class="text-muted">No doctors found matching your criteria.</p></div>`;
+    return;
+  }
+  grid.innerHTML = doctors.map((d,i) => {
+    const initials = d.name.split(' ').map(n=>n[0]).join('').slice(0,2);
+    const stars = '★'.repeat(Math.floor(d.rating))+'☆'.repeat(5-Math.floor(d.rating));
+    return `
+    <div class="col-xl-4 col-md-6 mb-4 fade-up" style="animation-delay:${i*0.07}s">
+      <div class="doctor-card h-100">
+        <div class="doctor-img-wrap">
+          ${d.photo?`<img src="${d.photo}" alt="Dr.${d.name}">`:`<div class="doctor-avatar-placeholder">${initials}</div>`}
+          <span class="doctor-badge"><i class="fas fa-circle me-1" style="font-size:8px;"></i>Available</span>
+        </div>
+        <div class="doctor-body">
+          <div class="doctor-name">Dr. ${d.name}</div>
+          <div class="doctor-spec">${d.specialization}</div>
+          <span class="badge mb-2" style="background:var(--light);color:var(--primary);font-size:11px;">${d.department_name}</span>
+          <div class="doctor-meta">
+            <span class="doctor-meta-item"><i class="fas fa-graduation-cap"></i>${d.qualification}</span>
+            <span class="doctor-meta-item"><i class="fas fa-clock"></i>${d.experience_years} yrs exp</span>
+            <span class="doctor-meta-item rating-stars">${stars} ${d.rating}</span>
+            <span class="doctor-meta-item"><i class="fas fa-users"></i>${Number(d.total_patients).toLocaleString()}+ patients</span>
+          </div>
+          <div class="d-flex align-items-center justify-content-between mt-3 pt-3 border-top">
+            <div><small class="text-muted d-block">Consultation</small><span class="doc-fee">SGD ${d.consultation_fee}</span></div>
+            <button class="btn-primary-custom py-2 px-4" onclick="openBookingWithDoctor(${d.id},'${d.name.replace(/'/g,"\\'")}','${d.department_name}')">
+              <i class="fas fa-calendar-plus me-1"></i>Book
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  document.querySelectorAll('.fade-up').forEach(el => {
+    el.style.opacity='1'; el.style.transform='translateY(0)';
+  });
+}
+
+// Filters
+function applyFilters() {
+  const search = document.getElementById('filterSearch').value.toLowerCase();
+  const dept = document.getElementById('filterDept').value;
+  const gender = document.getElementById('filterGender').value;
+  const filtered = allDoctorsPage.filter(d => {
+    const matchSearch = !search || d.name.toLowerCase().includes(search) || d.specialization.toLowerCase().includes(search);
+    const matchDept = !dept || d.department_name === dept;
+    const matchGender = !gender || d.gender === gender;
+    return matchSearch && matchDept && matchGender;
+  });
+  renderAllDoctors(filtered);
+}
+
+function resetFilters() {
+  document.getElementById('filterSearch').value = '';
+  document.getElementById('filterDept').value = '';
+  document.getElementById('filterGender').value = '';
+  renderAllDoctors(allDoctorsPage);
+}
+
+document.getElementById('filterSearch')?.addEventListener('input', applyFilters);
+document.getElementById('filterDept')?.addEventListener('change', applyFilters);
+document.getElementById('filterGender')?.addEventListener('change', applyFilters);
+
+function setView(v) {
+  const grid = document.getElementById('doctorsFullGrid');
+  if (v === 'list') {
+    grid.querySelectorAll('[class*="col-xl-4"]').forEach(el => { el.className = 'col-12 mb-3 fade-up'; });
+  } else {
+    grid.querySelectorAll('.col-12.mb-3').forEach(el => { el.className = 'col-xl-4 col-md-6 mb-4 fade-up'; });
+  }
+}
+
+// Set date min
+const dateInput = document.getElementById('bookingDate');
+if (dateInput) { const t = new Date(); t.setDate(t.getDate()+1); dateInput.min = t.toISOString().split('T')[0]; }
+
+loadAllDoctors();
+</script>
+</body>
+</html>
