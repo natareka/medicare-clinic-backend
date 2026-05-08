@@ -108,10 +108,16 @@ TWILIO_FROM_NUMBER = os.environ.get('TWILIO_FROM_NUMBER', '+16624957616')
 
 # ─── CORS ─────────────────────────────────────────────────────────────────────
 CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:5500",
+#     "http://127.0.0.1:5500",
+#     "http://localhost:8000",
+# ]
+
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5500",
-    "http://127.0.0.1:5500",
-    "http://localhost:8000",
+    "http://localhost:3000",        # If testing locally
+    "http://127.0.0.1:5500",        # For VS Code Live Server
+    "https://your-frontend.render.com" # If hosted
 ]
 
 # ─── REST FRAMEWORK ───────────────────────────────────────────────────────────

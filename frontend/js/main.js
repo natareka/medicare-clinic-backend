@@ -3,7 +3,7 @@
  * Handles: API calls, Booking wizard, UI interactions
  */
 
-const API_BASE = 'http://127.0.0.1:8000/api';
+const API_BASE_URL = "https://medicare-clinic-backend.onrender.com/api";
 
 // ── UTILS ────────────────────────────────────────────────────────────────────
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
