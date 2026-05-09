@@ -3,7 +3,7 @@
  * Handles: API calls, Booking wizard, UI interactions
  */
 
-const API_BASE_URL = "https://medicare-clinic-backend.onrender.com/api";
+const API_BASE_URL = "[https://medicare-clinic-backend.onrender.com/api](https://medicare-clinic-backend.onrender.com/api)";
 
 // ── UTILS ────────────────────────────────────────────────────────────────────
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
@@ -31,13 +31,13 @@ function createToastContainer() {
 }
 
 async function apiGet(path) {
-  const res = await fetch(`${API_BASE}${path}`);
+  const res = await fetch(`${API_BASE_URL}${path}`);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.json();
 }
 
 async function apiPost(path, data) {
-  const res = await fetch(`${API_BASE}${path}`, {
+  const res = await fetch(`${API_BASE_URL}${path}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'X-CSRFToken': getCookie('csrftoken') },
     body: JSON.stringify(data),
@@ -207,17 +207,31 @@ async function loadDoctors(deptId = '') {
     { id: 6, name: 'David Wong', department_name: 'Dermatology', qualification: 'MBBS, MD Dermatology', specialization: 'Cosmetic Dermatology', experience_years: 9, consultation_fee: '110.00', rating: '4.6', total_patients: 590, is_available: true },
   ];
 
+  // try {
+  //   const url = deptId ? `/doctors/?department=${deptId}` : '/doctors/';
+  //   const res = await apiGet(url);
+  //   if (res.success && res.data.length) {
+  //     allDoctors = res.data;
+  //   } else {
+  //     allDoctors = fallback;
+  //   }
+  // } catch (e) {
+  //   allDoctors = fallback;
+  // }
+
   try {
     const url = deptId ? `/doctors/?department=${deptId}` : '/doctors/';
     const res = await apiGet(url);
-    if (res.success && res.data.length) {
-      allDoctors = res.data;
+    
+    // Make sure this matches your API structure
+    if (res.success && res.data) { 
+      allDoctors = res.data; // This will now load "Dr. Mitra" from Render
     } else {
       allDoctors = fallback;
     }
-  } catch (e) {
+} catch (e) {
     allDoctors = fallback;
-  }
+}
 
   renderDoctors(allDoctors);
 }
