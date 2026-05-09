@@ -118,6 +118,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",        # If testing locally
     "http://127.0.0.1:5500",        # For VS Code Live Server
     "https://your-frontend.render.com" # If hosted
+    "[https://medicare-clinic-backend-1.onrender.com](https://medicare-clinic-backend-1.onrender.com)"
 ]
 
 # ─── REST FRAMEWORK ───────────────────────────────────────────────────────────
